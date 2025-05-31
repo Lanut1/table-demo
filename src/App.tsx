@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Alert, Box, Container, Typography } from '@mui/material'
 import './App.css'
+import BookList from './components/BookList'
+import AddBookForm from './components/AddBookForm'
+import { useBooks } from './context/BookContext'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { error: globalError } = useBooks()
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Container maxWidth="md" sx={{ py: 3, backgroundColor: 'background.paper', minHeight: '100vh', borderRadius: 1, mt:1}}>
+      <Typography variant="h3" component="h1" gutterBottom textAlign="center" color="primary">
+        My Digital Bookshelf
+      </Typography>
+
+      {globalError && !globalError.includes("form") && !globalError.includes("Load more") && (
+        <Alert severity="error" sx={{ mb: 2.5 }}>
+          Error occurred: {globalError}
+        </Alert>
+      )}
+     
+
+      <Box sx={{ mb: 3.5 }}>
+        <AddBookForm />
+      </Box>
+
+      <BookList />
+    </Container>
   )
 }
 
