@@ -1,0 +1,204 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Harry Potter and the Philosopher's Stone",
+      "author": "J.K. Rowling",
+      "genre": "Fantasy",
+      "rating": 5,
+      "status": "Read",
+      "pages": 300,
+      "review": "Excellent start to a magical saga!"
+    },
+    {
+      "id": 2,
+      "title": "Nineteen Eighty-Four",
+      "author": "George Orwell",
+      "genre": "Dystopian",
+      "rating": 5,
+      "status": "Read",
+      "pages": 328,
+      "review": "Thought-provoking. Still relevant today."
+    },
+    {
+        "id": 3,
+        "title": "The Master and Margarita",
+        "author": "Mikhail Bulgakov",
+        "genre": "Classic Literature",
+        "rating": 4,
+        "status": "Currently Reading",
+        "pages": 480,
+        "review": ""
+      },
+      {
+        "id": 4,
+        "title": "The Hitchhiker's Guide to the Galaxy",
+        "author": "Douglas Adams",
+        "genre": "Science Fiction",
+        "rating": 5,
+        "status": "To Read",
+        "pages": 224,
+        "review": ""
+      },
+      {
+        "id": 5,
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "genre": "Science Fiction",
+        "rating": 0,
+        "status": "To Read",
+        "pages": 688,
+        "review": "Heard it's a classic, need to tackle this one."
+      },
+      {
+        "id": 6,
+        "title": "Murder on the Orient Express",
+        "author": "Agatha Christie",
+        "genre": "Mystery",
+        "rating": 4,
+        "status": "Read",
+        "pages": 256,
+        "review": "Classic detective story, Poirot is brilliant."
+      },
+      {
+        "id": 7,
+        "title": "Introduction to Algorithms",
+        "author": "Thomas H. Cormen",
+        "genre": "Textbook",
+        "rating": 0,
+        "status": "Currently Reading",
+        "pages": 1312,
+        "review": ""
+      },
+      {
+        "id": 8,
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "genre": "Classic Literature",
+        "rating": 5,
+        "status": "Read",
+        "pages": 324,
+        "review": "A powerful and moving story."
+      },
+      {
+        "id": 9,
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "genre": "Classic Literature",
+        "rating": 4,
+        "status": "Read",
+        "pages": 180,
+        "review": "A poignant look at the American Dream."
+      },
+      {
+        "id": 10,
+        "title": "Sapiens: A Brief History of Humankind",
+        "author": "Yuval Noah Harari",
+        "genre": "Non-Fiction",
+        "rating": 5,
+        "status": "Currently Reading",
+        "pages": 464,
+        "review": "Fascinating insights into human history."
+      },
+      {
+        "id": 11,
+        "title": "Brave New World",
+        "author": "Aldous Huxley",
+        "genre": "Dystopian",
+        "rating": 4,
+        "status": "Read",
+        "pages": 311,
+        "review": "A chilling vision of the future."
+      },
+      {
+        "id": 12,
+        "title": "The Lord of the Rings",
+        "author": "J.R.R. Tolkien",
+        "genre": "Fantasy",
+        "rating": 5,
+        "status": "Read",
+        "pages": 1178,
+        "review": "Epic fantasy masterpiece."
+      },
+      {
+        "id": 13,
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "genre": "Classic Literature",
+        "rating": 4,
+        "status": "To Read",
+        "pages": 432,
+        "review": ""
+      },
+      {
+        "id": 14,
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "genre": "Classic Literature",
+        "rating": 3,
+        "status": "Read",
+        "pages": 224,
+        "review": "Understood the angst, but not my favorite."
+      },
+      {
+        "id": 15,
+        "title": "Foundation",
+        "author": "Isaac Asimov",
+        "genre": "Science Fiction",
+        "rating": 5,
+        "status": "Currently Reading",
+        "pages": 255,
+        "review": "Grand scale sci-fi."
+      },
+      {
+        "id": 16,
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "genre": "Fantasy",
+        "rating": 5,
+        "status": "Read",
+        "pages": 310,
+        "review": "A charming adventure."
+      },
+      {
+        "id": 17,
+        "title": "Cosmos",
+        "author": "Carl Sagan",
+        "genre": "Non-Fiction",
+        "rating": 5,
+        "status": "Read",
+        "pages": 384,
+        "review": "Inspiring and wonderfully written."
+      },
+      {
+        "id": 18,
+        "title": "Fahrenheit 451",
+        "author": "Ray Bradbury",
+        "genre": "Dystopian",
+        "rating": 4,
+        "status": "To Read",
+        "pages": 194,
+        "review": ""
+      },
+      {
+        "id": 19,
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "genre": "Classic Literature",
+        "rating": 0,
+        "status": "Dropped",
+        "pages": 720,
+        "review": "Couldn't get through it."
+      },
+      {
+        "id": 20,
+        "title": "The Martian",
+        "author": "Andy Weir",
+        "genre": "Science Fiction",
+        "rating": 5,
+        "status": "Read",
+        "pages": 369,
+        "review": "Thrilling and scientifically engaging!"
+      }
+    ]
+}
