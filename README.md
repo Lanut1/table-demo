@@ -1,54 +1,32 @@
-# React + TypeScript + Vite
+# My Digital Bookshelf Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This React + TypeScript application serves as a demonstration of skills for a technical assessment. It enables users to view and add books, featuring infinite scroll for book listing and a modal form for adding new entries. The application interacts with a mock backend powered by "json-server".
 
-Currently, two official plugins are available:
+## Core Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **Book Listing:** Displays an inventory of books in a tabular format, showing details such as title, author, genre, user rating, reading status, page count, and a brief review.
+*   **Infinite Scroll Implementation:** Dynamically loads more books as the user scrolls, providing a seamless browsing experience for larger datasets. This is implemented using the "react-infinite-scroll-component".
+*   **Add New Book Functionality:** Users can add new books to their collection via a modal. This includes client-side form validation using Joi.
+*   **State Management:** Leverages the React Context API for managing shared application state related to books, loading indicators, and error handling.
+*   **API Integration:** Fetches and posts data to a "json-server", which simulates a RESTful backend.
+*   **Data Sorting:** Books are sorted by their creation timestamp in descending order, ensuring the most recently created books appear at the top of the list.
+*   **UI/UX:** Built with Material-UI (MUI) for a consistent and responsive user interface.
+*   **Testing:** Incorporates unit tests for the API service layer (book.service.ts)
 
-## Expanding the ESLint configuration
+## Technology Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+*   **Frontend Framework/Libraries:**
+    *   React with TypeScript
+    *   Vite
+    *   Material-UI (MUI)
+    *   Joi Validation
+    *   React Infinite Scroll Component
+    *   React Context API
+*   **Mock Backend:**
+    *   "json-server"
+*   **Testing Frameworks/Libraries:**
+    *   Jest
+ 
+## State Management: Why React Context API?
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+For this application's state management, React's Context API was chosen for its simplicity and suitability to the project's scale. While powerful libraries like Redux offer extensive features, they would introduce unnecessary complexity for managing the book collection and UI states in this particular project. Context API provides an effective built-in solution to share state (like the book list and loading indicators) and functions across components, cleanly avoiding prop drilling without the overhead of a larger state management system. This keeps the component interactions direct and the overall architecture more straightforward.
