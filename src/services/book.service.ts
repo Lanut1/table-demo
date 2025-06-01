@@ -1,5 +1,5 @@
 import type { Book, NewBook, PaginatedBooksData} from "../types/book.types";
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = process.env.API_BASE_URL;
 export const ITEMS_PER_PAGE = 10;
 
 export const fetchBooks = async (page: number): Promise<PaginatedBooksData> => {
