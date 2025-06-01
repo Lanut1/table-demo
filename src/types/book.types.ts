@@ -12,6 +12,18 @@ export interface Book {
 
 export type NewBook = Omit<Book, 'id'>;
 
+type NumberOrNull = number | null; 
+
+export interface PaginatedBooksData {
+  first: NumberOrNull;
+  prev: NumberOrNull;
+  next: NumberOrNull;
+  last: NumberOrNull;
+  pages: NumberOrNull;
+  items: NumberOrNull;
+  data: Book[];
+}
+
 export interface BookContextType {
   books: Book[];
   isLoading: boolean;

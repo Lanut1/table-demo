@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useCallback, useEffect, type ReactNode } from 'react';
-import { fetchBooks, createBook as apiCreateBook, ITEMS_PER_PAGE } from '../services/book.service';
+import { fetchBooks, createBook as apiCreateBook } from '../services/book.service';
 import type { Book, BookContextType, NewBook } from '../types/book.types';
 
 const BookContext = createContext<BookContextType | undefined>(undefined);
@@ -18,13 +18,11 @@ export const BookProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     setIsLoading(true);
     setError(null);
-    console.log("loading initial")
     try {
       const initialBooks = await fetchBooks(1);
-      setBooks(initialBooks);
-      console.log(initialBooks)
+      setBooks(initialBooks.data);
       setCurrentPage(1);
-      setHasMore(initialBooks.length === ITEMS_PER_PAGE);
+      setHasMore(!!initialBooks.next);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load initial books');
       setBooks([]);
@@ -41,19 +39,14 @@ export const BookProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const loadMoreBooks = useCallback(async () => {
     if (isLoadingMore || !hasMore || isLoading) return;
 
-    console.log("loading more books")
-
     setIsLoadingMore(true);
     setError(null);
     try {
       const nextPageToFetch = currentPage + 1;
       const newBooks = await fetchBooks(nextPageToFetch);
-      console.log(newBooks)
-
-
-      setBooks((prevBooks) => [...prevBooks, ...newBooks]);
+      setBooks((prevBooks) => [...prevBooks, ...newBooks.data]);
       setCurrentPage(nextPageToFetch);
-      setHasMore(newBooks.length === ITEMS_PER_PAGE)
+      setHasMore(!!newBooks.next)
     } catch (err) {
       setError(err instanceof Error ? `Load more error: ${err.message}` : 'Failed to load more books');
     } finally {
@@ -68,8 +61,8 @@ export const BookProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setError(null);
 
     try {
-      const addedBook = await apiCreateBook(newBookData);
-      setBooks(prevBooks => [addedBook, ...prevBooks.filter(b => b.id !== addedBook.id)].sort((a,b) => b.id - a.id ));
+      await apiCreateBook(newBookData);
+      await loadInitialBooks();
     } catch (err) {
       const errorMessage = err instanceof Error ? `Add book error: ${err.message}` : 'Failed to add book';
       setError(errorMessage);

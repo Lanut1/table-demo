@@ -7,7 +7,6 @@ import {
 } from '@mui/material';
 import { useBooks } from '../context/BookContext';
 
-
 const BookList: React.FC = () => {
   const {
     books,
@@ -17,7 +16,6 @@ const BookList: React.FC = () => {
     loadMoreBooks,
     loadInitialBooks
   } = useBooks();
-
   
   if (isLoading && books.length === 0) {
     return (
@@ -32,11 +30,10 @@ const BookList: React.FC = () => {
 
   if (error && !error.includes("form") && !error.includes("Load more") && books.length === 0) {
     return (
-          <Alert severity="error" sx={{ mt: 2 }}>
-      Oops! Error loading books: {error}
-    </Alert>
+      <Alert severity="error" sx={{ mt: 2 }}>
+        Oops! Error loading books: {error}
+      </Alert>
     )
-
   }
 
   if (!isLoading && books.length === 0 && !error) {
@@ -47,9 +44,14 @@ const BookList: React.FC = () => {
     )
   }
 
-
   return (
     <>
+      {error && error.includes("Load more") && (
+        <Alert severity="error" sx={{mt: 2.5}}>
+          Error fetching more books
+        </Alert>
+      )}
+
       <InfiniteScroll
         dataLength={books.length}
         next={loadMoreBooks}
@@ -68,7 +70,7 @@ const BookList: React.FC = () => {
         refreshFunction={loadInitialBooks}
       >
         <TableContainer component={Paper} elevation={2} sx={{ mt: 1 }}>
-          <Table aria-label="books table" stickyHeader >
+          <Table stickyHeader >
             <TableHead sx={{backgroundColor: 'grey.200'}}>
               <TableRow>
                 <TableCell sx={{fontWeight: 'bold'}}>Title</TableCell>
@@ -82,7 +84,7 @@ const BookList: React.FC = () => {
             </TableHead>
             <TableBody>
               {books?.map((book) => (
-                <TableRow key={book.id} hover sx={{ '&:nth-of-type(odd)': { backgroundColor: 'action.hover' } }}>
+                <TableRow key={book.id} sx={{ '&:nth-of-type(odd)': { backgroundColor: 'action.hover' } }}>
                   <TableCell component="th" scope="row">{book.title}</TableCell>
                   <TableCell>{book.author}</TableCell>
                   <TableCell>{book.genre}</TableCell>
@@ -98,12 +100,6 @@ const BookList: React.FC = () => {
           </Table>
         </TableContainer>
       </InfiniteScroll>
-
-      {error && error.includes("Load more") && (
-          <Alert severity="warning" sx={{mt: 2.5}}>
-            Error fetching more books
-          </Alert>
-      )}
     </>
   );
 };
